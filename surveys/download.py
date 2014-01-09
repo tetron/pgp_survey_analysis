@@ -27,7 +27,7 @@ s1.close()
 for n, t in surveys.items():
     s1 = urllib2.urlopen("https://my.personalgenomes.org/google_surveys/{0}/download".format(n))
     now = datetime.now().strftime("%Y%m%d%H%M%S")
-    f = open("PGPParticipantSurvey-{1}-{0}.csv".format(now, t), 'w')
+    f = open("PGPTrait&DiseaseSurvey2012-{1}-{0}.csv".format(now, t), 'w')
     f.write(s1.read())
     f.close()
     s1.close()
