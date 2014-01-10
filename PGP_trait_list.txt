@@ -237,3 +237,4 @@ Ehlers-Danlos syndrome	CongenitalTraitsAndAnomalies
 Ichthyosis vulgaris	CongenitalTraitsAndAnomalies
 Single transverse palmar crease (simian crease)	CongenitalTraitsAndAnomalies
 Marfan syndrome	CongenitalTraitsAndAnomalies
+Non-Celiac Gluten Sensitivity	Digestive

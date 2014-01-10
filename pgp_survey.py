@@ -141,3 +141,38 @@ def get_participant_survey(directory='.'):
     survey_file = _latest_matching_file(survey_regex, directory)
     survey = SurveyData(survey_file)
     return survey
+
+name_remapping = { 
+    "Chronic tonsillitis": "Chronic/recurrent tonsillitis",
+    "Achilles tendonitis": "Achilles tendinitis"
+}
+
+def get_traits_for(huID, participant_survey, trait_surveys, trait_survey_traits):
+    """Get all traits for the given huID.  Performs some data cleanup so that every trait should match an entry in PGP_trait_list"""
+    hutraits = []
+    for i in xrange(0, len(trait_surveys)):
+        s = trait_surveys[i]
+        t = trait_survey_traits[i]
+        r = s.get_latest_responses(huID)
+        if r and len(r[1]) > 0:
+            for j in t:
+                m = re.search("(.*) \\([^)]*\\)", j)
+                if m:
+                    k = m.group(1)
+                else:
+                    k = j
+
+                k = k.strip()
+                k = k.replace('(', '\\(').replace(')', '\\)')
+
+                if re.search(j, r[1], re.IGNORECASE):
+                    hutraits.append(j)
+                elif re.search(k, r[1], re.IGNORECASE):
+                    hutraits.append(j)
+
+            for j in name_remapping:
+                if re.search(j, r[1], re.IGNORECASE):
+                    hutraits.append(name_remapping[j])
+                
+    return hutraits
+    
