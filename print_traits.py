@@ -11,7 +11,6 @@ trait_surveys, trait_survey_traits = pgp_survey.get_trait_surveys(surveys_direct
 # Input participant survey.
 participant_survey = pgp_survey.get_participant_survey(surveys_directory)
 
-
 for huID in participant_survey.get_huIDs():
     print(huID)
     #for i in xrange(0, len(participant_survey.header_titles)):
