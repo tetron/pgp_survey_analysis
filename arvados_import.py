@@ -102,7 +102,7 @@ for huID in huIDs:
                                                   }}).execute()
 
     for ht in survey_columns:
-        if ht == 'Sex/Gender' or ht == 'Race/Ethnicity':
+        if ht == 'Sex/Gender' or ht == 'Race/ethnicity':
             if all_traits[ht]["uuid"] not in already_added_traits:
                 print("{0}/{2}: Adding trait '{1}'".format(huID, ht, humans[huID]["head_uuid"]))
 
